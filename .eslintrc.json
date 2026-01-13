@@ -1,0 +1,12 @@
+// can be deleted in future
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "__dirname"
+  },
+  "ignorePatterns": [
+    "assets/**",
+    "*.js"
+  ]
+}

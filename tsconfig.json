@@ -1,0 +1,30 @@
+{
+    "extends": "./node_modules/pcf-scripts/tsconfig_base.json",
+    "compilerOptions": {
+        
+        "typeRoots": ["node_modules/@types"],
+        // custom configs
+        "target": "es2017",
+        "module": "esnext",
+        "jsx": "react",
+        "strict": true,
+        "skipLibCheck": true,
+        "allowJs": false,
+        "checkJs": false
+    },
+
+    "files": [],
+    
+    "include": [
+        "**/*.ts",
+        "**/*.tsx"
+    ],
+
+    "exclude": [
+        "**/*.js",
+        "assets",
+        "node_modules",
+        "out",
+        "dist"
+    ]
+}

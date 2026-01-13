@@ -1,0 +1,15 @@
+    undo redo | 
+    bold italic underline | 
+    alignleft aligncenter alignright alignjustify | 
+    bullist numlist outdent indent | 
+    link image media | 
+    code help | 
+    table tabledelete | 
+    tableprops tablerowprops tablecellprops | 
+    tableinsertrowbefore tableinsertrowafter tabledeleterow | 
+    tableinsertcolbefore tableinsertcolafter tabledeletecol"
+
+{name: 'tables', items: ['table', 'tabledelete']},
+{name: 'tableProps', items: ['tableprops', 'tablerowprops','tablecellprops']},
+{name: 'tableActions1', items: ['tableinsertrowbefore', 'tableinsertrowafter','tabledeleterow']},
+{name: 'tableActions2', items: ['tableinsertcolbefore', 'tableinsertcolafter','tabledeletecol']},
