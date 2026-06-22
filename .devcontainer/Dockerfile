@@ -17,11 +17,11 @@ RUN wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod
     && apt-get update \
     && apt-get -y install dotnet-sdk-8.0
 
-# Install Power Platform CLI (pac) globally and activate pnpm
-USER node
-
-# Enable Corepack and prepare pnpm
+# Enable Corepack and prepare pnpm as ROOT so it has permissions to /usr/local/bin
 RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Now switch to the non-root 'node' user for user-specific tooling
+USER node
 
 # Download and install pac CLI
 RUN mkdir -p /home/node/.pac \
