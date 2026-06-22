@@ -1,7 +1,7 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { EditorRenderer } from "./EditorRenderer";
+import { resolveTriggerMode, triggerBehavior } from "./triggerOutput";
 
 export class OFRTinyMCEEditor implements ComponentFramework.ReactControl<IInputs, IOutputs> {
     private notifyOutputChanged: () => void;
@@ -34,11 +34,8 @@ export class OFRTinyMCEEditor implements ComponentFramework.ReactControl<IInputs
         this._outputContent = context.parameters.contentHtml?.raw ?? "";
     }
 
-    // callback for getting data from the editor
     public collectContent = (content: string): void => {
             this._outputContent = content;
-            // notifyOutputChanged now triggered by the editor save button
-            //this.notifyOutputChanged();
     };
 
     /**
@@ -46,9 +43,11 @@ export class OFRTinyMCEEditor implements ComponentFramework.ReactControl<IInputs
      * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
      * @returns ReactElement root react element for the control
      */
-    public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {        
+    public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
         const initialContent = context.parameters.contentHtml.raw ?? "";
-        
+        const mode = resolveTriggerMode(context.parameters.triggerOutput?.raw);
+        const behavior = triggerBehavior(mode);
+
         return React.createElement(
             EditorRenderer,
             {
@@ -56,7 +55,8 @@ export class OFRTinyMCEEditor implements ComponentFramework.ReactControl<IInputs
                 onEditorChange: this.collectContent,
                 width: context.mode.allocatedWidth,
                 height: context.mode.allocatedHeight,
-                notifyOutputChanged: this.notifyOutputChanged
+                notifyOutputChanged: this.notifyOutputChanged,
+                behavior,
             }
         )
     }

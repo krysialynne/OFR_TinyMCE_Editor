@@ -6,6 +6,11 @@
 
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="contentHtml" display-name-key="Content HTML" description-key="HTML Content" of-type="Multiple" usage="bound" required="true" />
+    <property name="triggerOutput" display-name-key="Trigger Output" description-key="When the control pushes its value to the host" of-type="Enum" usage="input" required="false" default-value="FocusOut">
+      <value name="FocusOut" display-name-key="Focus Out">FocusOut</value>
+      <value name="Delayed" display-name-key="Delayed">Delayed</value>
+      <value name="Manual" display-name-key="Save Button">Manual</value>
+    </property>
     <!--
       Property node's of-type attribute can be of-type-group attribute.
       Example:
