@@ -1,15 +1,16 @@
 {
-  "name": "Power Platform PCF Developer Environment (pnpm)",
+  "name": "Power Platform PCF - Extension Managed (pnpm)",
   "build": {
     "dockerfile": "Dockerfile"
   },
   
+  // Forward port for the local PCF test harness (pnpm start)
   "forwardPorts": [8181],
   
   "customizations": {
     "vscode": {
       "extensions": [
-        "microsoft-powerapps-portals.vscode-powerplatform",
+        "microsoft-IsvExpTools.powerplatform-vscode",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "ms-dotnettools.csdevkit"
@@ -20,7 +21,7 @@
     }
   },
 
-  // Use pnpm to install dependencies automatically on creation
+  // Automatically restore your node_modules using pnpm on startup
   "postCreateCommand": "pnpm install",
 
   "remoteUser": "node"
