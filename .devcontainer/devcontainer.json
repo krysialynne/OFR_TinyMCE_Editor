@@ -1,0 +1,27 @@
+{
+  "name": "Power Platform PCF Developer Environment (pnpm)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  
+  "forwardPorts": [8181],
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "microsoft-powerapps-portals.vscode-powerplatform",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-dotnettools.csdevkit"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  // Use pnpm to install dependencies automatically on creation
+  "postCreateCommand": "pnpm install",
+
+  "remoteUser": "node"
+}
