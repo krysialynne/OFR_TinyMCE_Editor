@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Project containing your PowerApps Component Framework (PCF) control.",
   "scripts": {
-    "copy-tinymce-skins": "xcopy node_modules\\tinymce\\skins OFRTinyMCEEditor\\assets\\skins /E /I /Y",
+    "copy-tinymce-skins": "node -e \"const fs=require('fs');fs.cpSync('node_modules/tinymce/skins','OFRTinyMCEEditor/assets/skins',{recursive:true,force:true})\"",
     "build": "npm run copy-tinymce-skins && pcf-scripts build",
     "clean": "pcf-scripts clean",
     "lint": "pcf-scripts lint",
